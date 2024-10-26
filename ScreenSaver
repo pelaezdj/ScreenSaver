@@ -1,0 +1,42 @@
+#!/bin/bash
+
+TestMode="false" # When "true" this puts the text at the bottom right corner of the display
+MaxSpaces=152 # Maximum width of display
+MaxReturns=43 # Maximum height of display
+
+while [[ 1 == 1 ]]; do
+	clear
+
+	if [[ $TestMode == "true" ]]; then NumSpaces=$MaxSpaces
+	                              else NumSpaces=$(($RANDOM % MaxSpaces)); fi
+	StrSpaces=""
+	Counter=0
+	while [[ $Counter -le NumSpaces ]]; do
+		StrSpaces=$StrSpaces" "
+		Counter=$(($Counter + 1)); done
+
+
+	if [[ $TestMode == "true" ]]; then NumReturns=$MaxReturns
+	                              else NumReturns=$(($RANDOM % MaxReturns)); fi
+	StrReturns=""
+	Counter=0
+	while [[ $Counter -le NumReturns ]]; do
+		StrReturns=$StrReturns"\n"
+		Counter=$(($Counter + 1)); done
+
+
+	echo -ne "$StrReturns$StrSpaces$(date +%R) "
+
+	Counter=$(date +%S)
+	sleep $((61 - $Counter))
+done
+
+
+
+
+
+
+
+
+
+
